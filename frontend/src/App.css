@@ -1,0 +1,245 @@
+/* frontend/src/App.css */
+.window-frame {
+  width: 100vw;
+  height: 100vh;
+  background: #F7F7F7;
+  font-family: "Tahoma", "Segoe UI", sans-serif;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.client-area {
+  flex: 1;
+  padding: 20px 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  row-gap: 12px;
+  column-gap: 20px;
+  align-items: center;
+  max-width: 450px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.label-cell {
+  font-size: 13px;
+  color: #000000;
+  text-align: left;
+}
+
+.input-cell {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.classic-input {
+  width: 100%;
+  height: 22px;
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  padding: 2px 4px;
+  font-size: 13px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.success-bubble {
+  margin-top: 10px;
+  padding: 10px;
+  background: #f8f9fa;
+  border: 1px solid #20c997;
+  border-left: 4px solid #20c997;
+  color: #333333;
+  font-size: 12px;
+  max-width: 400px;
+  line-height: 1.4;
+  box-sizing: border-box;
+}
+
+/* Progress Modal Styles (Matching user image) */
+.progress-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.progress-modal-content {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 40px 50px;
+  width: 450px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.progress-modal-text {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333333;
+  margin-bottom: 25px;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.progress-track {
+  width: 100%;
+  height: 10px;
+  background: #e9ecef;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #20c997; /* 이미지와 동일한 에메랄드 그린 */
+  border-radius: 5px;
+  transition: width 0.3s ease;
+}
+
+.progress-count {
+  font-size: 14px;
+  color: #495057;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.progress-percent {
+  font-size: 16px;
+  color: #6c757d;
+  font-weight: 500;
+}
+
+.error-bubble {
+  margin-top: 10px;
+  padding: 10px;
+  background: #fff5f5;
+  border: 1px solid #fa5252;
+  border-left: 4px solid #fa5252;
+  color: #333333;
+  font-size: 12px;
+  max-width: 400px;
+  line-height: 1.4;
+  box-sizing: border-box;
+}
+
+.button-area {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.main-btn, .sub-btn {
+  height: 28px;
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  border-radius: 2px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #000000;
+  cursor: pointer;
+  outline: none;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.main-btn:hover, .sub-btn:hover {
+  background: #333333;
+  color: #FFFFFF;
+}
+
+.main-btn {
+  width: 110px;
+}
+
+.sub-btn {
+  width: 90px;
+}
+
+/* 발급 확정 버튼: 시각적 강조 */
+.confirm-btn {
+  width: 110px;
+  background: #000000;
+  border-color: #000000;
+  color: #ffffff;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.confirm-btn:hover {
+  background: #333333;
+  color: #FFFFFF;
+}
+
+.confirm-btn:disabled {
+  background: #CCCCCC;
+  border-color: #CCCCCC;
+  color: #666666;
+  cursor: not-allowed;
+}
+
+.tab-container {
+  display: flex;
+  background: #F7F7F7;
+  padding: 4px 4px 0 4px;
+  border-bottom: 1px solid #000000;
+}
+
+.tab-btn {
+  padding: 6px 16px;
+  margin-right: 2px;
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+  cursor: pointer;
+  font-size: 13px;
+  color: #000000;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.tab-btn:hover {
+  background: #333333;
+  color: #FFFFFF;
+}
+
+.tab-btn.active {
+  background: #000000;
+  font-weight: bold;
+  border: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+  color: #FFFFFF;
+  margin-bottom: -1px;
+}
+
+.tab-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}

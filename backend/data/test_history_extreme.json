@@ -1,0 +1,131 @@
+[ {
+  "id" : 1,
+  "certificateNo" : "OP202606290001",
+  "certificateDate" : "2026-06-29",
+  "calibrationDate" : "2026-06-28",
+  "expiryDate" : "2027-06-28",
+  "createdDate" : "2026-09-17T15:02:47",
+  "serialMappings" : [ {
+    "id" : null,
+    "serialNo" : "RACE-COND-1",
+    "pageNumber" : 1,
+    "sequenceNo" : 1
+  } ]
+}, {
+  "id" : 2,
+  "certificateNo" : "OP202606290001",
+  "certificateDate" : "2026-06-29",
+  "calibrationDate" : "2026-06-28",
+  "expiryDate" : "2027-06-28",
+  "createdDate" : "2026-09-17T15:02:48",
+  "serialMappings" : [ {
+    "id" : null,
+    "serialNo" : "RACE-COND-1",
+    "pageNumber" : 1,
+    "sequenceNo" : 1
+  } ]
+}, {
+  "id" : 3,
+  "certificateNo" : "OP202606290001",
+  "certificateDate" : "2026-06-29",
+  "calibrationDate" : "2026-06-28",
+  "expiryDate" : "2027-06-28",
+  "createdDate" : "2026-09-17T15:02:49",
+  "serialMappings" : [ {
+    "id" : null,
+    "serialNo" : "RACE-COND-1",
+    "pageNumber" : 1,
+    "sequenceNo" : 1
+  } ]
+}, {
+  "id" : 4,
+  "certificateNo" : "OP202606290001",
+  "certificateDate" : "2026-06-29",
+  "calibrationDate" : "2026-06-28",
+  "expiryDate" : "2027-06-28",
+  "createdDate" : "2026-09-17T15:02:50",
+  "serialMappings" : [ {
+    "id" : null,
+    "serialNo" : "RACE-COND-1",
+    "pageNumber" : 1,
+    "sequenceNo" : 1
+  } ]
+}, {
+  "id" : 5,
+  "certificateNo" : "OP202606290001",
+  "certificateDate" : "2026-06-29",
+  "calibrationDate" : "2026-06-28",
+  "expiryDate" : "2027-06-28",
+  "createdDate" : "2026-09-17T15:02:51",
+  "serialMappings" : [ {
+    "id" : null,
+    "serialNo" : "RACE-COND-1",
+    "pageNumber" : 1,
+    "sequenceNo" : 1
+  } ]
+}, {
+  "id" : 6,
+  "certificateNo" : "OP202606290001",
+  "certificateDate" : "2026-06-29",
+  "calibrationDate" : "2026-06-28",
+  "expiryDate" : "2027-06-28",
+  "createdDate" : "2026-09-17T15:02:52",
+  "serialMappings" : [ {
+    "id" : null,
+    "serialNo" : "RACE-COND-1",
+    "pageNumber" : 1,
+    "sequenceNo" : 1
+  } ]
+}, {
+  "id" : 7,
+  "certificateNo" : "OP202606290001",
+  "certificateDate" : "2026-06-29",
+  "calibrationDate" : "2026-06-28",
+  "expiryDate" : "2027-06-28",
+  "createdDate" : "2026-09-17T15:02:53",
+  "serialMappings" : [ {
+    "id" : null,
+    "serialNo" : "RACE-COND-1",
+    "pageNumber" : 1,
+    "sequenceNo" : 1
+  } ]
+}, {
+  "id" : 8,
+  "certificateNo" : "OP202606290001",
+  "certificateDate" : "2026-06-29",
+  "calibrationDate" : "2026-06-28",
+  "expiryDate" : "2027-06-28",
+  "createdDate" : "2026-09-17T15:02:54",
+  "serialMappings" : [ {
+    "id" : null,
+    "serialNo" : "RACE-COND-1",
+    "pageNumber" : 1,
+    "sequenceNo" : 1
+  } ]
+}, {
+  "id" : 9,
+  "certificateNo" : "OP202606290001",
+  "certificateDate" : "2026-06-29",
+  "calibrationDate" : "2026-06-28",
+  "expiryDate" : "2027-06-28",
+  "createdDate" : "2026-09-17T15:02:55",
+  "serialMappings" : [ {
+    "id" : null,
+    "serialNo" : "RACE-COND-1",
+    "pageNumber" : 1,
+    "sequenceNo" : 1
+  } ]
+}, {
+  "id" : 10,
+  "certificateNo" : "OP202606290001",
+  "certificateDate" : "2026-06-29",
+  "calibrationDate" : "2026-06-28",
+  "expiryDate" : "2027-06-28",
+  "createdDate" : "2026-09-17T15:02:56",
+  "serialMappings" : [ {
+    "id" : null,
+    "serialNo" : "RACE-COND-1",
+    "pageNumber" : 1,
+    "sequenceNo" : 1
+  } ]
+} ]

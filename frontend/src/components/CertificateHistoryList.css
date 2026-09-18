@@ -1,0 +1,225 @@
+/* frontend/src/components/CertificateHistoryList.css */
+.history-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: #F7F7F7;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    padding: 8px;
+    overflow: hidden;
+}
+
+.history-status,
+.history-error {
+    font-size: 13px;
+    color: #000000;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.history-error {
+    color: #c0392b;
+}
+
+/* 검색창 영역 */
+.history-search-bar {
+    margin-bottom: 8px;
+    display: flex;
+}
+
+.history-search-input {
+    flex: 1;
+    padding: 6px 10px;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    font-size: 12px;
+    outline: none;
+    font-family: "Tahoma", "Segoe UI", sans-serif;
+}
+
+.history-search-input:focus {
+    border-color: #000000;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+/* 테이블 영역 */
+.table-wrapper {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 1px solid #000000;
+    background: #FFFFFF;
+    position: relative;
+}
+
+.history-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 11px;
+    font-family: "Tahoma", "Segoe UI", sans-serif;
+}
+
+/* 헤더 */
+.history-table th {
+    background-color: #000000;
+    color: #FFFFFF;
+    border-bottom: 2px solid #000000;
+    border-right: 1px solid #333333;
+    padding: 4px 2px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    white-space: nowrap;
+    box-sizing: border-box;
+    font-size: 11px;
+    line-height: 1.25;
+}
+
+.history-table th:last-child {
+    border-right: none;
+}
+
+/* 화살표 열 너비 */
+.col-arrow {
+    width: 22px;
+}
+
+/* 메인 데이터 행 */
+.history-row {
+    cursor: pointer;
+    background: #FFFFFF;
+}
+
+.history-row td {
+    border-bottom: 1px solid #000000;
+    border-right: 1px solid #000000;
+    padding: 5px 2px;
+    text-align: center;
+    white-space: nowrap;
+    box-sizing: border-box;
+    font-size: 11px;
+}
+
+.history-row td:last-child {
+    border-right: none;
+}
+
+.history-row:hover {
+    background: #F0F0F0;
+}
+
+.history-row.expanded {
+    background: #E0E0E0;
+}
+
+/* 화살표 아이콘 */
+.arrow-icon {
+    display: inline-block;
+    font-size: 8px;
+    color: #000000;
+    transition: transform 0.2s ease;
+}
+
+.arrow-icon.open {
+    transform: rotate(90deg);
+}
+
+/* 다운로드 버튼 그룹 */
+.download-btn-group {
+    display: flex;
+    gap: 3px;
+    justify-content: center;
+    padding: 0 2px;
+}
+
+.download-btn {
+    flex: 1;
+    height: 22px;
+    padding: 0 4px;
+    font-size: 10.5px;
+    margin: 0;
+    border: 1px solid #000000;
+    border-radius: 2px;
+    background: #FFFFFF;
+    color: #000000;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.download-btn:hover:not(:disabled) {
+    background: #000000;
+    color: #FFFFFF;
+}
+
+.download-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* 펼쳐진 시리얼 번호 행 */
+.serial-detail-row td {
+    border-bottom: 1px solid #000000;
+    padding: 0;
+    background: #F8F8F8;
+}
+
+.serial-detail-container {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 8px 12px;
+    box-sizing: border-box;
+    background: #F8F8F8;
+}
+
+.serial-detail-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.serial-detail-label {
+    font-size: 11px;
+    color: #000000;
+    font-weight: bold;
+}
+
+.serial-detail-count {
+    font-size: 11px;
+    color: #666666;
+}
+
+.serial-chip-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    max-height: 150px;
+    overflow-y: auto;
+    padding: 6px;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.serial-chip {
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 3px;
+    padding: 2px 6px;
+    font-size: 11px;
+    color: #000000;
+    font-family: "Courier New", monospace;
+    line-height: 1.3;
+}
+
+.history-empty-cell {
+    border: none;
+    padding: 30px;
+    text-align: center;
+    color: #777777;
+}
