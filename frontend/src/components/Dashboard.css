@@ -1,14 +1,14 @@
-/* frontend/src/components/Dashboard.css */
+/* frontend/src/components/Dashboard.css - Verdana Health */
 .dashboard-container {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 14px;
     padding: 16px 20px;
     height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
     box-sizing: border-box;
-    background: #F7F7F7;
+    background: var(--vh-bg);
 }
 
 .dashboard-status,
@@ -18,15 +18,14 @@
     justify-content: center;
     height: 100%;
     font-size: 13px;
-    color: #555555;
-    font-family: "Tahoma", "Segoe UI", sans-serif;
+    color: var(--vh-text-muted);
 }
 
 .dashboard-error {
-    color: #c0392b;
+    color: var(--vh-error);
 }
 
-/* 요약 카드 */
+/* Summary Cards */
 .summary-cards {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -34,25 +33,27 @@
 }
 
 .summary-card {
-    background: #FFFFFF;
-    border: 1px solid #CCCCCC;
-    border-radius: 4px;
+    background: var(--vh-surface);
+    border: 1px solid var(--vh-border);
+    border-radius: var(--vh-radius);
     padding: 14px 16px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 4px;
     box-sizing: border-box;
-    transition: box-shadow 0.2s ease;
+    box-shadow: var(--vh-shadow-sm);
+    transition: box-shadow 0.2s, border-color 0.2s;
 }
 
 .summary-card:hover {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--vh-shadow-md);
+    border-color: var(--vh-border-md);
 }
 
 .summary-card.highlight {
-    border-color: #3478c5;
-    border-left: 3px solid #3478c5;
+    border-top: 3px solid var(--vh-sage);
+    box-shadow: var(--vh-shadow);
 }
 
 .card-icon {
@@ -62,26 +63,28 @@
 
 .card-value {
     font-size: 22px;
-    font-weight: bold;
-    color: #000000;
-    font-family: "Tahoma", "Segoe UI", sans-serif;
+    font-weight: 700;
+    color: var(--vh-navy);
     line-height: 1.2;
 }
 
 .card-label {
     font-size: 11px;
-    color: #777777;
-    font-family: "Tahoma", "Segoe UI", sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    color: var(--vh-text-muted);
 }
 
-/* 차트 영역 */
+/* Chart Section */
 .chart-section {
-    background: #FFFFFF;
-    border: 1px solid #CCCCCC;
-    border-radius: 4px;
+    background: var(--vh-surface);
+    border: 1px solid var(--vh-border);
+    border-radius: var(--vh-radius);
     padding: 14px 16px;
     box-sizing: border-box;
     overflow: hidden;
+    box-shadow: var(--vh-shadow-sm);
 }
 
 .chart-header {
@@ -92,10 +95,11 @@
 }
 
 .chart-title {
-    font-size: 13px;
-    font-weight: bold;
-    color: #000000;
-    font-family: "Tahoma", "Segoe UI", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--vh-text-sub);
 }
 
 .chart-toggle {
@@ -104,28 +108,28 @@
 }
 
 .toggle-btn {
-    height: 24px;
-    padding: 0 10px;
-    background: #FFFFFF;
-    border: 1px solid #CCCCCC;
-    border-radius: 2px;
+    height: 28px;
+    padding: 0 12px;
+    background: var(--vh-muted-bg);
+    border: 1px solid var(--vh-border);
+    border-radius: var(--vh-radius-sm);
     font-size: 11px;
-    color: #555555;
+    font-weight: 500;
+    color: var(--vh-text-muted);
     cursor: pointer;
-    font-family: "Tahoma", "Segoe UI", sans-serif;
-    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
 }
 
 .toggle-btn:hover {
-    background: #f0f0f0;
-    border-color: #999999;
+    background: var(--vh-border);
+    color: var(--vh-navy);
 }
 
 .toggle-btn.active {
-    background: #000000;
+    background: var(--vh-navy);
     color: #FFFFFF;
-    border-color: #000000;
-    font-weight: bold;
+    border-color: var(--vh-navy);
+    font-weight: 700;
 }
 
 .chart-wrapper {
@@ -146,33 +150,31 @@
 
 .chart-empty {
     text-align: center;
-    padding: 40px 0;
+    padding: 30px 0;
     font-size: 13px;
-    color: #999999;
-    font-family: "Tahoma", "Segoe UI", sans-serif;
+    color: var(--vh-text-muted);
 }
 
-/* 하단 새로고침 */
 .dashboard-footer {
     display: flex;
     justify-content: flex-end;
 }
 
 .refresh-btn {
-    height: 26px;
-    padding: 0 14px;
-    background: #FFFFFF;
-    border: 1px solid #000000;
-    border-radius: 2px;
+    height: 32px;
+    padding: 0 18px;
+    background: transparent;
+    border: 1px solid var(--vh-navy);
+    border-radius: var(--vh-radius);
     font-size: 12px;
-    font-weight: bold;
-    color: #000000;
+    font-weight: 600;
+    color: var(--vh-navy);
     cursor: pointer;
-    font-family: "Tahoma", "Segoe UI", sans-serif;
-    transition: background-color 0.2s ease, color 0.2s ease;
+    box-shadow: var(--vh-shadow-sm);
+    transition: background 0.2s, box-shadow 0.2s;
 }
 
 .refresh-btn:hover {
-    background: #333333;
-    color: #FFFFFF;
+    background: rgba(15, 23, 42, 0.04);
+    box-shadow: var(--vh-shadow);
 }

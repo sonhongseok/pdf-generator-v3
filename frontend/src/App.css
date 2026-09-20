@@ -1,9 +1,9 @@
-/* frontend/src/App.css */
+/* frontend/src/App.css - Verdana Health */
 .window-frame {
   width: 100vw;
   height: 100vh;
-  background: #F7F7F7;
-  font-family: "Tahoma", "Segoe UI", sans-serif;
+  background: var(--vh-bg);
+  font-family: var(--vh-font);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -13,30 +13,76 @@
 
 .client-area {
   flex: 1;
-  padding: 20px 25px;
+  padding: var(--vh-lg) var(--vh-xl);
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: var(--vh-md);
   position: relative;
   box-sizing: border-box;
   overflow: auto;
 }
 
+/* ── Tabs ── */
+.tab-container {
+  display: flex;
+  background: var(--vh-surface);
+  padding: var(--vh-sm) var(--vh-sm) 0 var(--vh-sm);
+  border-bottom: 2px solid var(--vh-border);
+  gap: 4px;
+}
+
+.tab-btn {
+  padding: 8px 20px;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  border-radius: 0;
+  cursor: pointer;
+  font-family: var(--vh-font);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--vh-text-muted);
+  margin-bottom: -2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.tab-btn:hover {
+  color: var(--vh-navy);
+  border-bottom-color: var(--vh-border-md);
+}
+
+.tab-btn.active {
+  color: var(--vh-sage);
+  border-bottom: 3px solid var(--vh-sage);
+  font-weight: 700;
+}
+
+.tab-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--vh-bg);
+}
+
+/* ── Form Grid ── */
 .form-grid {
   display: grid;
-  grid-template-columns: 130px 1fr;
-  row-gap: 12px;
+  grid-template-columns: 140px 1fr;
+  row-gap: 14px;
   column-gap: 20px;
   align-items: center;
-  max-width: 450px;
+  max-width: 460px;
   width: 100%;
   box-sizing: border-box;
 }
 
 .label-cell {
   font-size: 13px;
-  color: #000000;
+  font-weight: 500;
+  color: var(--vh-navy);
   text-align: left;
+  letter-spacing: 0;
 }
 
 .input-cell {
@@ -45,38 +91,133 @@
   width: 100%;
 }
 
+/* ── Inputs ── */
 .classic-input {
   width: 100%;
-  height: 22px;
-  background: #FFFFFF;
-  border: 1px solid #000000;
-  padding: 2px 4px;
-  font-size: 13px;
+  height: 42px;
+  background: var(--vh-surface);
+  border: 1px solid var(--vh-border);
+  border-radius: var(--vh-radius);
+  padding: 10px 14px;
+  font-family: var(--vh-font);
+  font-size: 14px;
+  color: var(--vh-text);
   outline: none;
   box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-shadow: var(--vh-shadow-sm);
 }
 
+.classic-input:hover {
+  border-color: var(--vh-navy);
+}
+
+.classic-input:focus {
+  border: 2px solid var(--vh-navy);
+  box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.09);
+}
+
+.classic-input::placeholder {
+  color: var(--vh-border-md);
+}
+
+/* ── Buttons ── */
+.main-btn, .sub-btn, .confirm-btn, .classic-button {
+  height: 42px;
+  border-radius: var(--vh-radius);
+  font-family: var(--vh-font);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s, box-shadow 0.2s, color 0.2s;
+  box-shadow: var(--vh-shadow-sm);
+}
+
+/* Secondary */
+.main-btn, .sub-btn, .classic-button {
+  background: transparent;
+  border: 1px solid var(--vh-navy);
+  color: var(--vh-navy);
+  padding: 0 22px;
+}
+
+.main-btn:hover:not(:disabled),
+.sub-btn:hover:not(:disabled),
+.classic-button:hover:not(:disabled) {
+  background: rgba(15, 23, 42, 0.04);
+  box-shadow: var(--vh-shadow);
+}
+
+.main-btn:disabled,
+.sub-btn:disabled,
+.classic-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Primary / Confirm */
+.confirm-btn {
+  background: var(--vh-navy);
+  border: none;
+  color: #FFFFFF;
+  padding: 0 22px;
+}
+
+.confirm-btn:hover:not(:disabled) {
+  background: var(--vh-navy-dark);
+  box-shadow: var(--vh-shadow-md);
+}
+
+.confirm-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.button-area {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+/* ── Messages ── */
 .success-bubble {
   margin-top: 10px;
-  padding: 10px;
-  background: #f8f9fa;
-  border: 1px solid #20c997;
-  border-left: 4px solid #20c997;
-  color: #333333;
-  font-size: 12px;
-  max-width: 400px;
-  line-height: 1.4;
-  box-sizing: border-box;
+  padding: 10px 14px;
+  background: rgba(34, 197, 94, 0.08);
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  border-left: 4px solid var(--vh-success);
+  border-radius: var(--vh-radius);
+  color: var(--vh-text);
+  font-size: 13px;
+  max-width: 420px;
+  line-height: 1.5;
 }
 
-/* Progress Modal Styles (Matching user image) */
+.error-bubble {
+  margin-top: 10px;
+  padding: 10px 14px;
+  background: rgba(239, 68, 68, 0.06);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-left: 4px solid var(--vh-error);
+  border-radius: var(--vh-radius);
+  color: var(--vh-text);
+  font-size: 13px;
+  max-width: 420px;
+  line-height: 1.5;
+}
+
+/* ── Progress Modal ── */
 .progress-modal-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.3);
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(15, 23, 42, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -84,162 +225,50 @@
 }
 
 .progress-modal-content {
-  background: #ffffff;
-  border-radius: 12px;
+  background: var(--vh-surface);
+  border-radius: var(--vh-radius-md);
   padding: 40px 50px;
   width: 450px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--vh-shadow-lg);
+  border: 1px solid var(--vh-border);
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 16px;
   box-sizing: border-box;
 }
 
 .progress-modal-text {
-  font-size: 18px;
-  font-weight: 500;
-  color: #333333;
-  margin-bottom: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--vh-navy);
   text-align: center;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 .progress-track {
   width: 100%;
-  height: 10px;
-  background: #e9ecef;
-  border-radius: 5px;
+  height: 8px;
+  background: var(--vh-muted-bg);
+  border-radius: var(--vh-radius-full);
   overflow: hidden;
-  margin-bottom: 15px;
 }
 
 .progress-fill {
   height: 100%;
-  background: #20c997; /* 이미지와 동일한 에메랄드 그린 */
-  border-radius: 5px;
+  background: linear-gradient(90deg, var(--vh-sage-dark), var(--vh-sage));
+  border-radius: var(--vh-radius-full);
   transition: width 0.3s ease;
 }
 
 .progress-count {
-  font-size: 14px;
-  color: #495057;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-
-.progress-percent {
-  font-size: 16px;
-  color: #6c757d;
+  font-size: 13px;
+  color: var(--vh-text-muted);
   font-weight: 500;
 }
 
-.error-bubble {
-  margin-top: 10px;
-  padding: 10px;
-  background: #fff5f5;
-  border: 1px solid #fa5252;
-  border-left: 4px solid #fa5252;
-  color: #333333;
-  font-size: 12px;
-  max-width: 400px;
-  line-height: 1.4;
-  box-sizing: border-box;
-}
-
-.button-area {
-  display: flex;
-  gap: 12px;
-  margin-top: 10px;
-}
-
-.main-btn, .sub-btn {
-  height: 28px;
-  background: #FFFFFF;
-  border: 1px solid #000000;
-  border-radius: 2px;
-  font-size: 12px;
-  font-weight: bold;
-  color: #000000;
-  cursor: pointer;
-  outline: none;
-  box-shadow: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-}
-
-.main-btn:hover, .sub-btn:hover {
-  background: #333333;
-  color: #FFFFFF;
-}
-
-.main-btn {
-  width: 110px;
-}
-
-.sub-btn {
-  width: 90px;
-}
-
-/* 발급 확정 버튼: 시각적 강조 */
-.confirm-btn {
-  width: 110px;
-  background: #000000;
-  border-color: #000000;
-  color: #ffffff;
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-}
-
-.confirm-btn:hover {
-  background: #333333;
-  color: #FFFFFF;
-}
-
-.confirm-btn:disabled {
-  background: #CCCCCC;
-  border-color: #CCCCCC;
-  color: #666666;
-  cursor: not-allowed;
-}
-
-.tab-container {
-  display: flex;
-  background: #F7F7F7;
-  padding: 4px 4px 0 4px;
-  border-bottom: 1px solid #000000;
-}
-
-.tab-btn {
-  padding: 6px 16px;
-  margin-right: 2px;
-  background: #FFFFFF;
-  border: 1px solid #000000;
-  border-bottom: none;
-  border-radius: 4px 4px 0 0;
-  cursor: pointer;
-  font-size: 13px;
-  color: #000000;
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-}
-
-.tab-btn:hover {
-  background: #333333;
-  color: #FFFFFF;
-}
-
-.tab-btn.active {
-  background: #000000;
-  font-weight: bold;
-  border: 1px solid #000000;
-  border-bottom: 1px solid #000000;
-  color: #FFFFFF;
-  margin-bottom: -1px;
-}
-
-.tab-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+.progress-percent {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--vh-sage);
 }

@@ -1,179 +1,184 @@
-/* frontend/src/components/CertificateHistoryList.css */
+/* frontend/src/components/CertificateHistoryList.css - Verdana Health */
 .history-container {
     display: flex;
     flex-direction: column;
     height: 100%;
-    background: #F7F7F7;
-    border: 1px solid #000000;
-    box-sizing: border-box;
-    padding: 8px;
     overflow: hidden;
+    background: var(--vh-bg);
 }
 
-.history-status,
-.history-error {
-    font-size: 13px;
-    color: #000000;
-    text-align: center;
-    margin-top: 20px;
-}
-
-.history-error {
-    color: #c0392b;
-}
-
-/* 검색창 영역 */
-.history-search-bar {
-    margin-bottom: 8px;
+.history-status {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size: 14px;
+    color: var(--vh-text-muted);
+}
+
+.history-error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size: 14px;
+    color: var(--vh-error);
+}
+
+/* Search Bar */
+.history-search-bar {
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--vh-border);
+    background: var(--vh-surface);
 }
 
 .history-search-input {
-    flex: 1;
-    padding: 6px 10px;
-    border: 1px solid #000000;
-    border-radius: 4px;
-    font-size: 12px;
+    width: 100%;
+    height: 38px;
+    background: var(--vh-bg);
+    border: 1px solid var(--vh-border);
+    border-radius: var(--vh-radius);
+    padding: 8px 14px;
+    font-family: var(--vh-font);
+    font-size: 13px;
+    color: var(--vh-text);
     outline: none;
-    font-family: "Tahoma", "Segoe UI", sans-serif;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.history-search-input:hover {
+    border-color: var(--vh-navy);
 }
 
 .history-search-input:focus {
-    border-color: #000000;
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
+    border: 2px solid var(--vh-navy);
+    box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.09);
 }
 
-/* 테이블 영역 */
+.history-search-input::placeholder {
+    color: var(--vh-border-md);
+}
+
+/* Table */
 .table-wrapper {
     flex: 1;
     overflow-y: auto;
     overflow-x: hidden;
-    border: 1px solid #000000;
-    background: #FFFFFF;
-    position: relative;
+    background: var(--vh-surface);
 }
 
 .history-table {
     width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    font-size: 11px;
-    font-family: "Tahoma", "Segoe UI", sans-serif;
+    border-collapse: collapse;
+    table-layout: fixed;
 }
 
-/* 헤더 */
+.history-table thead tr {
+    border-bottom: 2px solid var(--vh-navy);
+    background: var(--vh-muted-bg);
+}
+
 .history-table th {
-    background-color: #000000;
-    color: #FFFFFF;
-    border-bottom: 2px solid #000000;
-    border-right: 1px solid #333333;
-    padding: 4px 2px;
-    text-align: center;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    white-space: nowrap;
-    box-sizing: border-box;
+    font-family: var(--vh-font);
     font-size: 11px;
-    line-height: 1.25;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--vh-text-sub);
+    padding: 10px 10px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 1px solid var(--vh-border);
 }
 
 .history-table th:last-child {
     border-right: none;
 }
 
-/* 화살표 열 너비 */
 .col-arrow {
-    width: 22px;
+    width: 26px;
+    min-width: 26px;
+    max-width: 26px;
 }
 
-/* 메인 데이터 행 */
-.history-row {
-    cursor: pointer;
-    background: #FFFFFF;
+.col-download {
+    width: 148px;
+    min-width: 148px;
+    max-width: 148px;
 }
 
-.history-row td {
-    border-bottom: 1px solid #000000;
-    border-right: 1px solid #000000;
-    padding: 5px 2px;
+.history-table td {
+    padding: 9px 10px;
+    font-size: 12px;
+    color: var(--vh-text);
     text-align: center;
+    border-bottom: 1px solid var(--vh-border);
+    overflow: hidden;
+    text-overflow: ellipsis;
     white-space: nowrap;
-    box-sizing: border-box;
-    font-size: 11px;
 }
 
-.history-row td:last-child {
-    border-right: none;
+.history-row {
+    background: var(--vh-surface);
+    cursor: pointer;
+    transition: background 0.15s;
 }
 
 .history-row:hover {
-    background: #F0F0F0;
+    background: var(--vh-bg);
 }
 
 .history-row.expanded {
-    background: #E0E0E0;
+    background: rgba(5, 150, 105, 0.04);
+    border-bottom: none;
 }
 
-/* 화살표 아이콘 */
 .arrow-icon {
     display: inline-block;
-    font-size: 8px;
-    color: #000000;
+    font-size: 9px;
+    color: var(--vh-text-muted);
     transition: transform 0.2s ease;
 }
 
 .arrow-icon.open {
     transform: rotate(90deg);
+    color: var(--vh-sage);
 }
 
-/* 다운로드 버튼 그룹 */
 .download-btn-group {
     display: flex;
-    gap: 3px;
+    gap: 5px;
     justify-content: center;
-    padding: 0 2px;
+    flex-wrap: nowrap;
+    overflow: visible;
 }
 
-.download-btn {
-    flex: 1;
-    height: 22px;
-    padding: 0 4px;
-    font-size: 10.5px;
-    margin: 0;
-    border: 1px solid #000000;
-    border-radius: 2px;
-    background: #FFFFFF;
-    color: #000000;
-    cursor: pointer;
+.sub-btn.download-btn {
+    height: 28px;
+    padding: 0 8px;
+    font-size: 11px;
     white-space: nowrap;
-    transition: background-color 0.15s ease, color 0.15s ease;
+    border-radius: var(--vh-radius-sm);
+    box-shadow: none;
+    min-width: 0;
+    flex-shrink: 0;
 }
 
-.download-btn:hover:not(:disabled) {
-    background: #000000;
-    color: #FFFFFF;
-}
-
-.download-btn:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
-/* 펼쳐진 시리얼 번호 행 */
+/* Serial Detail */
 .serial-detail-row td {
-    border-bottom: 1px solid #000000;
+    border-bottom: 1px solid var(--vh-border);
     padding: 0;
-    background: #F8F8F8;
+    background: rgba(5, 150, 105, 0.03);
 }
 
 .serial-detail-container {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    padding: 8px 12px;
+    padding: 10px 14px;
     box-sizing: border-box;
-    background: #F8F8F8;
 }
 
 .serial-detail-header {
@@ -184,13 +189,15 @@
 
 .serial-detail-label {
     font-size: 11px;
-    color: #000000;
-    font-weight: bold;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--vh-text-sub);
 }
 
 .serial-detail-count {
-    font-size: 11px;
-    color: #666666;
+    font-size: 12px;
+    color: var(--vh-text-muted);
 }
 
 .serial-chip-list {
@@ -199,27 +206,36 @@
     gap: 5px;
     max-height: 150px;
     overflow-y: auto;
-    padding: 6px;
-    background: #FFFFFF;
-    border: 1px solid #000000;
-    border-radius: 3px;
+    padding: 8px;
+    background: var(--vh-surface);
+    border: 1px solid var(--vh-border);
+    border-radius: var(--vh-radius);
     box-sizing: border-box;
 }
 
 .serial-chip {
-    background: #FFFFFF;
-    border: 1px solid #000000;
-    border-radius: 3px;
-    padding: 2px 6px;
+    background: var(--vh-muted-bg);
+    border: 1px solid var(--vh-border);
+    border-radius: var(--vh-radius-sm);
+    padding: 2px 8px;
     font-size: 11px;
-    color: #000000;
+    color: var(--vh-text);
     font-family: "Courier New", monospace;
-    line-height: 1.3;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.serial-chip:hover {
+    background: rgba(5, 150, 105, 0.08);
+    border-color: var(--vh-sage);
+    color: var(--vh-sage-dark);
 }
 
 .history-empty-cell {
     border: none;
     padding: 30px;
     text-align: center;
-    color: #777777;
+    color: var(--vh-text-muted);
+    font-size: 13px;
 }

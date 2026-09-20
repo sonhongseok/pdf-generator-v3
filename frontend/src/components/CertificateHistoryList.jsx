@@ -153,7 +153,7 @@ export default function CertificateHistoryList() {
                                     <br />
                                     개수
                                 </th>
-                                <th>다운로드</th>
+                                <th className="col-download">다운로드</th>
                             </tr>
                         </thead>
                         <tbody>

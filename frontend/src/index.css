@@ -1,4 +1,53 @@
 /* frontend/src/index.css */
+/* ── Verdana Health Design System: Global Tokens ── */
+
+:root {
+  /* Colors */
+  --vh-navy:       #0F172A;
+  --vh-navy-dark:  #020617;
+  --vh-slate:      #64748B;
+  --vh-slate-light:#475569;
+  --vh-sage:       #059669;
+  --vh-sage-dark:  #047857;
+  --vh-bg:         #F8FAFC;
+  --vh-surface:    #FFFFFF;
+  --vh-border:     #E2E8F0;
+  --vh-border-md:  #CBD5E1;
+  --vh-text:       #0F172A;
+  --vh-text-sub:   #475569;
+  --vh-text-muted: #64748B;
+  --vh-muted-bg:   #F1F5F9;
+  --vh-success:    #22C55E;
+  --vh-warning:    #EAB308;
+  --vh-error:      #EF4444;
+  --vh-info:       #0EA5E9;
+
+  /* Elevation */
+  --vh-shadow-sm:  0 1px 3px rgba(15,23,42,0.03);
+  --vh-shadow:     0 2px 6px rgba(15,23,42,0.05);
+  --vh-shadow-md:  0 4px 16px rgba(15,23,42,0.07);
+  --vh-shadow-lg:  0 8px 32px rgba(15,23,42,0.10);
+
+  /* Typography (시스템 폰트 유지) */
+  --vh-font: "Tahoma", "Segoe UI", sans-serif;
+
+  /* Spacing */
+  --vh-xs:  4px;
+  --vh-sm:  8px;
+  --vh-md:  16px;
+  --vh-lg:  24px;
+  --vh-xl:  32px;
+  --vh-2xl: 48px;
+  --vh-3xl: 64px;
+
+  /* Border Radius */
+  --vh-radius-sm: 4px;
+  --vh-radius:    8px;
+  --vh-radius-md: 12px;
+  --vh-radius-lg: 16px;
+  --vh-radius-full: 9999px;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,20 +55,20 @@
 }
 
 body {
-  background-color: #F7F7F7;
-  margin: 0;
-  padding: 0;
-  font-family: "Tahoma", "Segoe UI", sans-serif;
+  background-color: var(--vh-bg);
+  color: var(--vh-text);
+  font-family: var(--vh-font);
   overflow: hidden;
   height: 100vh;
   width: 100vw;
 }
 
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--vh-muted-bg); }
+::-webkit-scrollbar-thumb { background: var(--vh-border-md); border-radius: var(--vh-radius-sm); }
+::-webkit-scrollbar-thumb:hover { background: var(--vh-slate); }
+
 @keyframes progressAnim {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 200% 50%;
-  }
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
 }

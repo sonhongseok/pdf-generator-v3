@@ -28,3 +28,7 @@ frontend/.eslintcache
 .env.test.local
 .env.production.local
 *.log
+
+# 5. Build Artifacts
+dist/
+*.zip

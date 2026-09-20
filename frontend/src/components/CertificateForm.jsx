@@ -389,7 +389,7 @@ export default function CertificateForm() {
 
         <div className="label-cell">
           Start No
-          <span style={{ fontSize: '10px', color: '#888', display: 'block' }}>(0001~9999, 선택)</span>
+          <span style={{ fontSize: '10px', color: 'var(--vh-text-muted)', display: 'block' }}>(0001~9999, 선택)</span>
         </div>
         <div className="input-cell">
           <input
