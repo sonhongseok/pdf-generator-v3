@@ -32,3 +32,8 @@ frontend/.eslintcache
 # 5. Build Artifacts
 dist/
 *.zip
+# 6. Log Archives & Temporary Test Data
+*.log.*.gz
+*.gz
+backend/data/
+backend/app.log*
