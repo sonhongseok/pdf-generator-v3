@@ -40,6 +40,8 @@ public class CertificateController {
     private final DocxTemplateService docxTemplateService;
     private final MsWordPdfConverter msWordPdfConverter;
     private final PdfJobService pdfJobService;
+    // 수정: MS Word COM 단일 인스턴스 보호 및 매크로/광클 동시성 방어를 위한 락
+    private final java.util.concurrent.locks.ReentrantLock conversionLock = new java.util.concurrent.locks.ReentrantLock();
 
     // 생성자 주입
     public CertificateController(CertificateHistoryRepository certificateHistoryRepository,
@@ -150,32 +152,43 @@ public class CertificateController {
         // 5. 생성 방식 결정 (기본값 통합 PDF)
         final boolean isIndividualMode = "INDIVIDUAL".equals(request.getGenerateMode());
 
-        // 6. Word 템플릿 치환 및 PDF 변환
-        byte[] responseContent;
+        // 수정: MS Word COM 단일 인스턴스 보호 및 동시 요청(광클) 차단을 위한 tryLock 적용
+        if (!conversionLock.tryLock()) {
+            return buildErrorResponse(
+                    "현재 다른 성적서 변환 작업이 진행 중입니다. 잠시 후 다시 시도해 주세요.",
+                    HttpStatus.TOO_MANY_REQUESTS);
+        }
         try {
-            if (isIndividualMode) {
-                responseContent = generateIndividualPdfsAsZip(formattedDateStr, sequenceNos,
-                        request.getCertificateDate(), request.getCalibrationDate(),
-                        request.getExpiryDate(), request.getSerialNos());
-            } else {
-                responseContent = generatePdfBytes(formattedDateStr, sequenceNos, request.getCertificateDate(),
-                        request.getCalibrationDate(), request.getExpiryDate(), request.getSerialNos());
+            // 6. Word 템플릿 치환 및 PDF 변환
+            byte[] responseContent;
+            try {
+                if (isIndividualMode) {
+                    responseContent = generateIndividualPdfsAsZip(formattedDateStr, sequenceNos,
+                            request.getCertificateDate(), request.getCalibrationDate(),
+                            request.getExpiryDate(), request.getSerialNos());
+                } else {
+                    responseContent = generatePdfBytes(formattedDateStr, sequenceNos, request.getCertificateDate(),
+                            request.getCalibrationDate(), request.getExpiryDate(), request.getSerialNos());
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                return buildErrorResponse("서버 내부 오류로 PDF 생성을 진행할 수 없습니다: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return buildErrorResponse("서버 내부 오류로 PDF 생성을 진행할 수 없습니다: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
 
-        // 7. PDF 생성 성공 시 DB에 발급 이력 저장 (사용자용 생성 성공 시 확인용)
-        // 첫 번째 시퀀스 번호를 대표 인증번호로 사용
-        String baseCertificateNo = String.format("OP%s%04d", formattedDateStr, sequenceNos.get(0));
-        certificateHistoryService.saveToDatabase(baseCertificateNo, certDate, calDate, expDate, request.getSerialNos(), sequenceNos);
+            // 7. PDF 생성 성공 시 DB에 발급 이력 저장 (사용자용 생성 성공 시 확인용)
+            // 첫 번째 시퀀스 번호를 대표 인증번호로 사용
+            String baseCertificateNo = String.format("OP%s%04d", formattedDateStr, sequenceNos.get(0));
+            certificateHistoryService.saveToDatabase(baseCertificateNo, certDate, calDate, expDate, request.getSerialNos(), sequenceNos);
 
-        // 8. 생성 방식에 따라 PDF 또는 ZIP 응답 반환
-        if (isIndividualMode) {
-            return buildZipResponse(responseContent, baseCertificateNo + ".zip");
+            // 8. 생성 방식에 따라 PDF 또는 ZIP 응답 반환
+            if (isIndividualMode) {
+                return buildZipResponse(responseContent, baseCertificateNo + ".zip");
+            }
+            return buildPdfResponse(responseContent, baseCertificateNo + ".pdf");
+        } finally {
+            // 수정: 작업 완료 후 동시성 락 해제
+            conversionLock.unlock();
         }
-        return buildPdfResponse(responseContent, baseCertificateNo + ".pdf");
     }
 
     // ===== 비동기 PDF 생성 API (방향 B) ==========================================
